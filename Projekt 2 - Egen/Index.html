@@ -4,11 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekt 2</title> <!-- Glöm inte att byta ut -->
-    <script src="MyJS/jQuery_v4.js"></script>
-    <script src="MyJS/MyJQ.js"></script>
+    <!-- Hämtar in BootStrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> <!-- BootStrap Icons-->
+    <!-- Hämtar in våran CSS (måste ligga efter bootstrap)-->
     <link rel="stylesheet" href="MyCSS/style.css">
 </head>
-<body>
-    
+<body class="bg-light">
+    <div class="container-fluid bg-dark min-vh-100">
+        <div class="row gx-3 h-100">
+            <div class="col-12 col-lg-3 h-100"> <!-- Här lägger vi list-grupp -->
+                <!-- Behöver kunna fällas ihop till en hamburgare -->
+                <button class="btn fs-3 d-lg-none text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidopanel">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="offcanvas-lg offcanvas-start bg-dark text-white h-100" tabindex="-1" id="sidopanel">
+                    <div class="offcanvas-body h-100 flex-column">
+                        <h6 class="text-uppercase text-white px-3 pt-3">Person A</h6>
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action active text-white">
+                                DOM och Events
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action bg-transparent text-white">
+                                Alt-text och bilder
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-9 bg-dark"> <!-- Här lägger vi kort -->
+                <div class="row row-cols-md-3 g-3">
+                    <div class="card ms-3" style="width: 18rem">
+                        <img class="card-img-top" src="https://loremflickr.com/300/200/cat" alt="Card Image Cap 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 1</h5>
+                            <p class="card-text">Card Text 1</p>
+                            <a href="#" class="btn btn-primary">Testa</a>
+                            <a href="#" class="btn btn-warning">Visa Kod</a>
+                        </div>
+                    </div>
+                    <div class="card ms-3" style="width: 18rem">
+                        <img class="card-img-top" src="https://loremflickr.com/300/200/cat" alt="Card Image Cap 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 2</h5>
+                            <p class="card-text">Card Text 2</p>
+                            <a href="#" class="btn btn-primary">Testa</a>
+                            <a href="#" class="btn btn-warning">Visa Kod</a>
+                        </div>
+                    </div>
+                    <div class="card ms-3" style="width: 18rem">
+                        <img class="card-img-top" src="https://loremflickr.com/300/200/cat" alt="Card Image Cap 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 3</h5>
+                            <p class="card-text">Card Text 3</p>
+                            <a href="#" class="btn btn-primary">Testa</a>
+                            <a href="#" class="btn btn-warning">Visa Kod</a>
+                        </div>
+                    </div>
+                    <div class="card ms-3" style="width: 18rem">
+                        <img class="card-img-top" src="https://loremflickr.com/300/200/cat" alt="Card Image Cap 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 4</h5>
+                            <p class="card-text">Card Text 4</p>
+                            <a href="#" class="btn btn-primary">Testa</a>
+                            <a href="#" class="btn btn-warning">Visa Kod</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- Hämtar in jQuery-library -->
+    <script src="MyJS/jQuery_v4.js"></script>
+    <!-- Hämtar in vår egna jQuery -->
+    <script src="MyJS/MyJQ.js"></script>
 </body>
 </html>
