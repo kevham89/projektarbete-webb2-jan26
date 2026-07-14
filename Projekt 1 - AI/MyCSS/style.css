@@ -1,1 +1,38 @@
-@media (max-width: 800px) {} /* Grund för responsiv design */
+body {
+    background-color: #10141c;
+}
+
+#question-text code,
+.opt-text code {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: #ffc84d;
+}
+
+.list-group-item-action .letter {
+    font-family: 'Consolas', 'Fira Code', monospace;
+    color: var(--bs-secondary-color);
+    width: 1.2rem;
+    display: inline-block;
+    text-align: center;
+}
+
+/* correct / wrong answer states (used in addition to Bootstrap's list-group-item-success/danger) */
+.list-group-item.is-correct {
+    border-color: #ffc107;
+}
+
+.list-group-item.is-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+#grade-letter {
+    line-height: 1;
+}
+
+.cat-row {
+    font-family: 'Consolas', 'Fira Code', monospace;
+    font-size: 0.85rem;
+}
