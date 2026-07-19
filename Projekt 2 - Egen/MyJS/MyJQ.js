@@ -285,7 +285,7 @@ $(function (){
         </div>
     `;
     nav.forEach(function (group){
-        navHtml += `<h6 class="text-uppercase text-secondary small px-3 mt-3">${grupp.group}</h6>`;
+        navHtml += `<h6 class="text-uppercase text-secondary small px-3 mt-3">${group.group}</h6>`;
         navHtml += `<div class="list-group list-group-flush">`;
         group.items.forEach(function (item){
             navHtml += `

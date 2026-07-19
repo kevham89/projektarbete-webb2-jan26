@@ -1,0 +1,36 @@
+#list-container {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link-item.active {
+    background-color: #8d5efd;
+    color: #ffffff !important;
+    border-radius: 0.375rem;
+}
+
+.nav-link-item:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.card {
+    border-radius: 0.75rem;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme {
+    background-color: #f7f8fa !important;
+}
+
+body.light-theme .bg-dark {
+    background-color: #ffffff !important;
+}
+
+body.light-theme .text.white, body.light.theme .nav-link-item {
+    color: #212529 !important;
+}
+
+body.light-theme .card {
+    background-color: #f1f3f5 !important;
+    border-color: #dee2e6 !important;
+    color: #212529 !important;
+}
