@@ -164,11 +164,51 @@ $(function (){
                     </div>
                 </div>
             `,
-            
+            init: () => {
+                // new Date kollar på datorns klocka, toLocaleString berättar att vi vill skriva ut den enligt den svenska standarden sen skriver vi ut den informationen i "#now"
+                $("#now").text(new Date().toLocaleString("sv-SE"));
+            }
+        },
 
-
-
-        }
+        "checknumber": {
+            title: "checkNumber",
+            subtitle: "Kontrollera om ett tal är positivt, negativt, eller noll",
+            // Skapar metoden som skriver ut elementen.
+            render: () => `
+                <div class="col-12 col-md-6">
+                    <div class="card bg-secondary bg-opacity-10 border-secondary text-white">
+                        <div class="card-body">
+                            <input type="number" id="check-input" class="form-control mb-2" placeholder="Ange ett tal">
+                            <button class="btn btn-dark border" id="check-btn">Kontrollera</button>
+                            <p class="mt-3 mb-0" id="check-result"></p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            // Skapar metoden för logiken.
+            init: () => {
+                // Vi lyssnar efter click på #check-btn
+                $("#check-btn").on("click", function () {
+                    // Hämtar in värdet från #check-input som en sträng, "Number" konverterar strängen till ett riktigt tal.
+                    const num = Number($("#check-input").val());
+                    // Skapar en variabel med "let" så att värdet kan ändras.
+                    let result;
+                    // logiken för att kolla om talet är över, under, eller är 0.
+                    if (num > 0) {
+                        result = "Talet är positivt";
+                    } 
+                    else if (num < 0) {
+                        result = "Talet är negativt";
+                    }
+                    else {
+                        result = "Talet är noll";
+                    }
+                    // Skriver resultatet i #check-result
+                    $("#check-result").text(result);
+                });
+            }
+        },
+        
 
 
 
