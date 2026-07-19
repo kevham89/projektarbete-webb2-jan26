@@ -116,7 +116,7 @@ $(function (){
                 */
 
                 // Övning 6: Räkna antal <p> element på sidan.
-                $("#p-count").text(document.getElementsByTagName("p").lenght);
+                $("#p-count").text(document.getElementsByTagName("p").length);
             }
         },
 
@@ -277,4 +277,46 @@ $(function (){
             }
         }
     }; // Stänger variabeln "sections".
+
+    let navHtml = `
+        <div class="d-flex align-items-center gap-2 px-3 pt-3 pb-2 text-white">
+            <i class="bi bi-code-slash fs-4"></i>
+            <span class="fw-bold fs-5">Projekt Webb2</span>
+        </div>
+    `;
+    nav.forEach(function (group){
+        navHtml += `<h6 class="text-uppercase text-secondary small px-3 mt-3">${grupp.group}</h6>`;
+        navHtml += `<div class="list-group list-group-flush">`;
+        group.items.forEach(function (item){
+            navHtml += `
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-white nav-link-item" data-section="${item.id}">
+                    <i class="bi ${item.icon} me-2"></i>${item.title}
+                </a>
+            `;
+        });
+        navHtml += `</div>`
+    });
+    $("#list-container").html(navHtml);
+
+    function showSection(id) {
+        const section = sections[id];
+        if (!section) return;
+        $("#section-title").text(section.title);
+        $("#section-subtitle").text(section.subtitle);
+        $("#cards-area").css("background-color", "").html(section.render());
+        section.init();
+
+        $(".nav-link-item").removeClass("active");
+        $(".nav-link-item[data-section='" + id + "']").addClass("active");
+    }
+
+    $(document).on("click", ".nav-link-item", function (e) {
+        e.preventDefault();
+        showSection($(this).data("section"));
+    });
+
+    $(document).on("click", "#theme-toggle", function () {
+        $("body").toggleClass("light-theme");
+    });
+    showSection("dom-events");
 }); // Stänger hela "function" som vi började filen med. 
