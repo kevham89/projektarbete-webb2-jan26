@@ -42,7 +42,7 @@ $(function (){
                     <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
                         <div class="card-body">
                             <h6 class="text-uppercase text-secondary small">Klicka på texten</h6>
-                            <p class="mb-2><a href="#" id="klick-bg" class="link-primary">Klick byter bakgrundsfärg</a></p>
+                            <p class="mb-2"><a href="#" id="klick-bg" class="link-primary">Klick byter bakgrundsfärg</a></p>
                             <button class="btn btn-dark border" id="btn-alert">Testa</button>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ $(function (){
                     <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
                         <div class="card-body">
                             <h6 class="text-uppercase text-secondary small">Svep över texten</h6>
-                            <p class="mb-2 id="hover-text" style="cursor:pointer;">Hover ändrar färg</p>
+                            <p class="mb-2" id="hover-text" style="cursor:pointer;">Hover ändrar färg</p>
                             <button class="btn btn-dark border" id="btn-hover-demo">Testa</button>    
                         </div>
                     </div>
@@ -62,8 +62,8 @@ $(function (){
                     <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
                         <div class="card-body">
                             <h6 class="text-uppercase text-secondary small">Sidinformation</h6>
-                            <p class="mb-1>Title: <span id=page-title"></span></p>
-                            <p class="mb-0>Webbläsare: <span id=browser-info"></span></p>
+                            <p class="mb-1">Title: <span id="page-title"></span></p>
+                            <p class="mb-0">Webbläsare: <span id="browser-info"></span></p>
                         </div>
                     </div>
                 </div>
@@ -85,14 +85,14 @@ $(function (){
                 });
 
                 //Övning 2 - Byter bakgrundsfärg vid klick
-                $("klick-bg").on("click", function(e){
+                $("#klick-bg").on("click", function(e){
                     e.preventDefault(); // preventDefault är en standardfunktion som stoppar "normal beteendett" när vi klickar på en länk med "#". Dvs vi säger åt hemsida att "hoppa inte till toppen av hemsidan när vi klickar på den här knappen"
                     // skapar en variabel med "const" som innehåller en lista med färger.
                     const colors = ["#812529", "#1b1a8a", "#1b4a2f"];
                     // Math.random skapar ett tal mellan 0-1, vi multiplecerar det med antalet färger (4) vilket gör att vi får ett decimaltal mellan 0 - <4, sedan avrundar vi ner det till närmaste heltal så att resultatet blir 0,1,2, eller 3. 
                     const random = colors[Math.floor(Math.random() * colors.length)];
                     // Vi hämtar våran färg från "random" och skriver in den i våran CSS.
-                    $("#cards-area").css("bakground-color", random);
+                    $("#cards-area").css("background-color", random);
                 });
 
                 // Övning 3 & 4: Byter textfärg när vid hover och återgår vid mouseleave.
@@ -106,7 +106,7 @@ $(function (){
                 });
 
                 // Övning 5: Visa titel + Webbläsarinfo
-                $("#page-titel").text(document.title); // Standardfunktion som hämtar titel från html och skriver in den i #page-titel.
+                $("#page-title").text(document.title); // Standardfunktion som hämtar titel från html och skriver in den i #page-titel.
                 $("#browser-info").text(navigator.appName + " " + navigator.appVersion.split(" ")[0]); // appName hämtar namnet på webbläsaren, appVersion hämtar versionen. "split" delar upp texten vid varje mellanslag. [0] Hämtar bara första ordet/siffran.
                 
                 /* 
@@ -158,7 +158,7 @@ $(function (){
             render: () => `
                 <div class="col-12 cold-md-6">
                     <div class="card bg-secondary bg-opacity-10 border-secondary text-white">
-                        <div class=card-body>
+                        <div class="card-body">
                             <p class="fs-4 mb-0" id="now"></p>
                         </div>
                     </div>
@@ -217,7 +217,7 @@ $(function (){
                 <div class="col-12 cold-md-6">
                     <div class="card bg-secondary bg-opacity-10 border-secondary text white">
                         <div class="card-body">
-                            <input type="number" id="mult-input" class=form-control mb-2" placeholder="Ange ett tal">
+                            <input type="number" id="mult-input" class="form-control mb-2" placeholder="Ange ett tal">
                             <button class="btn btn-dark border" id="mult-btn">Visa tabell</button>
                             <ul class="mt-3 mb-0" id="mult-result"></ul>
                         </div>
@@ -236,37 +236,45 @@ $(function (){
                 for (let i = 1; i <= 10; i++) {
                     // bygger listan, (input) x (loop) = (input * loop)
                     $result.append(`<li>${num} x ${i} = ${num * i}</li>`);
-                }
-            });
+                    }
+                });
+            }   
+        },
+
+        "todo": {
+            title: "Todo-lista (jQuery)",
+            subtitle: "Lägg till, ta bort, och markera uppgifter som klara",
+            render: () => `
+                <div class="col-12 col-md-6">
+                    <div class="card bg-secondary bg-opacity-10 border-secondary text-white">
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <input type="text" id="todo-input" class="form-control" placeholder="Ny Uppgift...">
+                                <button class="btn btn-dark border" id="todo-add">Lägg till</button>
+                            </div>
+                            <ul class="list-group" id="todo-list"></ul>
+                        </div>
+                    </div>
+                </div>  
+            `,
+            init: () => {
+                $("#todo-add").on("click", function () {
+                    const val = $("#todo-input").val().trim();
+                    if (val === "") return;
+                    $("#todo-list").append(`
+                        <li class="list-group-item bg-transparent text-white d-flex justify-content-between align-items-center">
+                            <span class="todo-text">${val}</span>
+                            <button class="btn btn-sm btn-outline-danger todo-remove">x</button>
+                            </li>
+                        `);
+                    $("#todo-input").val("");
+                });
+                $("#todo-list").on("click", ".todo-text", function () {
+                    $(this).toggleClass("text-decoration-line-through text-secondary");
+                }).on("click", ".todo-remove", function () {
+                    $(this).closest("li").remove();
+                });
+            }
         }
-
-
-
-
-
-    },
-
-
-
-
-
-
-            
-        }
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-});
+    }; // Stänger variabeln "sections".
+}); // Stänger hela "function" som vi började filen med. 
