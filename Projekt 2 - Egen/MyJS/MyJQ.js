@@ -219,7 +219,7 @@ $(function (){
                         <div class="card-body">
                             <input type="number" id="mult-input" class="form-control mb-2" placeholder="Ange ett tal">
                             <button class="btn btn-dark border" id="mult-btn">Visa tabell</button>
-                            <ul class="mt-3 mb-0" id="mult-result"></ul>
+                            <ul class="mt-3 mb-0 themed-text" id="mult-result"></ul>
                         </div>
                     </div>
                 </div>
