@@ -208,7 +208,51 @@ $(function (){
                 });
             }
         },
-        
+
+        "multiplikation": {
+            title: "Multiplikationstabell",
+            subtitle: "Visar multiplikationstabellen för valt tal.",
+            // Skapar metoden som skriver ut elementen.
+            render: () => `
+                <div class="col-12 cold-md-6">
+                    <div class="card bg-secondary bg-opacity-10 border-secondary text white">
+                        <div class="card-body">
+                            <input type="number" id="mult-input" class=form-control mb-2" placeholder="Ange ett tal">
+                            <button class="btn btn-dark border" id="mult-btn">Visa tabell</button>
+                            <ul class="mt-3 mb-0" id="mult-result"></ul>
+                        </div>
+                    </div>
+                </div>
+            `,
+            // Skapar logiken
+            init: () => {
+                // lyssnar efter click
+                $("#mult-btn").on("click", function() {
+                // Hämtar in input och konverterar till ett tal som sparas i variabeln num.
+                const num = Number($("#mult-input").val());
+                // Tömmer #mult-result.
+                const $result = $("#mult-result").empty();
+                // Skapar en loop där "i" startar på 1 och plussar värdet med 1 varje loop så länge "i" är lika med eller mindre än 10. 
+                for (let i = 1; i <= 10; i++) {
+                    // bygger listan, (input) x (loop) = (input * loop)
+                    $result.append(`<li>${num} x ${i} = ${num * i}</li>`);
+                }
+            });
+        }
+
+
+
+
+
+    },
+
+
+
+
+
+
+            
+        }
 
 
 
