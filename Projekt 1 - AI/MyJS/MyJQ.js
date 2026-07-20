@@ -119,7 +119,7 @@ function App() {
       {/* Header */}
       <div className="text-center mb-4">
         <h1 className="display-5 fw-bold text-primary">⚽ VM-Tips 2026</h1>
-        <p className="text-muted">Lägg ditt tips på vilket land som tar hem guldet!</p>
+        <p className="text-white">Lägg ditt tips på vilket land som tar hem guldet!</p>
       </div>
 
       {/* Formulär */}
