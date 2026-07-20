@@ -1,1 +1,3 @@
-@media (max-width: 800px) {} /* Grund för responsiv design */
+.app-container {
+  max-width: 560px; 
+}
