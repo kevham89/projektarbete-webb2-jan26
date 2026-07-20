@@ -21,19 +21,18 @@ till höger där rätt modul visas/döljs med JavaScript (ingen sidomladdning be
 /webbutveckling2
 │
 ├── index.html
-├── style/
-│   ├── main.css          (delad layout, navigation, teman)
-│   ├── person-a.css      (styles för Person A:s moduler)
-│   └── person-b.css      (styles för Person B:s moduler)
+├── MyCSS/
+│   └── style.css     (Huvudfil för CSS)
 │
-├── scripts/
-│   ├── main.js           (navigation, delad logik, temaväxling)
-│   ├── person-a.js       (Person A:s övningar)
-│   └── person-b.js       (Person B:s övningar)
+├── MyJS/
+│   ├── jQuery_v4.js  (Library för jQuery)
+│   └── MyJQ.js       (Huvudfil för egna jQuerys)
 │
-└── modules/
-    ├── person-a/         (HTML-fragment eller sektioner för A:s övningar)
-    └── person-b/         (HTML-fragment eller sektioner för B:s övningar)
+├── MyCards
+|   └── cards.html    (Huvudfil för innehållet i alla "cards")
+│
+└── MyList
+    └── list.html     (Huvudfil för navigeringsmenyn)    
 ```
 
 > Tips: Ni kan använda `<template>`-taggar eller separata `<section id="...">` i `index.html`
