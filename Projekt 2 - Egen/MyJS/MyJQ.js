@@ -41,9 +41,19 @@ $(function (){
                 <div class="col-md-6 col-xl-4">
                     <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
                         <div class="card-body">
-                            <h6 class="text-uppercase text-secondary small">Klicka på texten</h6>
-                            <p class="mb-2"><a href="#" id="klick-bg" class="link-primary">Klick byter bakgrundsfärg</a></p>
+                            <h6 class="text-uppercase text-secondary small">Alert vid klick</h6>
+                            <p class="mb-2">Visar en popup med ett meddelande!</p>
                             <button class="btn btn-dark border" id="btn-alert">Testa</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-4">
+                    <div class="card border-secondary h-100 text-white" id="bg-card">
+                        <div class="card-body">
+                            <h6 class="text-uppercase text-secondary small">Byt bakgrundsfärg</h6>
+                            <p class="mb-2">Klicka på knappen för att byta mellan olika bakgrundsfärger.</p>
+                            <button class="btn btn-dark border" id="btn-bg">Testa</button>
                         </div>
                     </div>
                 </div>
@@ -85,14 +95,16 @@ $(function (){
                 });
 
                 //Övning 2 - Byter bakgrundsfärg vid klick
-                $("#klick-bg").on("click", function(e){
+                $("#btn-bg").on("click", function(e){
                     e.preventDefault(); // preventDefault är en standardfunktion som stoppar "normal beteendett" när vi klickar på en länk med "#". Dvs vi säger åt hemsida att "hoppa inte till toppen av hemsidan när vi klickar på den här knappen"
                     // skapar en variabel med "const" som innehåller en lista med färger.
                     const colors = ["#812529", "#1b1a8a", "#1b4a2f"];
                     // Math.random skapar ett tal mellan 0-1, vi multiplecerar det med antalet färger (4) vilket gör att vi får ett decimaltal mellan 0 - <4, sedan avrundar vi ner det till närmaste heltal så att resultatet blir 0,1,2, eller 3. 
                     const random = colors[Math.floor(Math.random() * colors.length)];
                     // Vi hämtar våran färg från "random" och skriver in den i våran CSS.
-                    $("#cards-area").css("background-color", random);
+                    $("#bg-card")[0].style.setProperty("background-color", random, "important");
+                    // Sätter textfärgen till vit med samma metod, så texten syns mot de mörka slumpfärgerna.
+                    $("#bg-card")[0].style.setProperty("color", "#ffffff", "important");
                 });
 
                 // Övning 3 & 4: Byter textfärg när vid hover och återgår vid mouseleave.
@@ -131,6 +143,18 @@ $(function (){
                             <ul id="alt-list" class="mb-0"></ul>
                         </div>
                     </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://picsum.photos/id/237/300/200" class="img-fluid rounded" alt="Svart labrador som ligger på golvet">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://picsum.photos/id/1015/300/200" class="img-fluid rounded" alt="Flod som slingrar sig genom ett bergslandskap">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://picsum.photos/id/1025/300/200" class="img-fluid rounded" alt="Hund med en handduk virad runt huvudet">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://picsum.photos/id/1043/300/200" class="img-fluid rounded" alt="Blommor i olika färger sedda uppifrån">
                 </div>
             `,
             // Skapar funktionaliteten för att hitta och lista alla alt-texter
