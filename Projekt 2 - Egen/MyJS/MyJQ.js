@@ -39,7 +39,7 @@ $(function (){
             // "Secondary" i bootstrap ger ett grått tema. "#" i våra länkar betyder att vi länkar till en plats på hemsidan och inte till en ny fil. (I det här fallet så hoppar vi högst upp på hemsidan)
             render: () => `
                 <div class="col-md-6 col-xl-4">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
+                    <div class="card h-100 text-white">
                         <div class="card-body">
                             <h6 class="text-uppercase text-secondary small">Alert vid klick</h6>
                             <p class="mb-2">Visar en popup med ett meddelande!</p>
@@ -59,17 +59,16 @@ $(function (){
                 </div>
 
                 <div class="col-md-6 col-xl-4">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
+                    <div class="card h-100 text-white">
                         <div class="card-body">
                             <h6 class="text-uppercase text-secondary small">Svep över texten</h6>
-                            <p class="mb-2" id="hover-text" style="cursor:pointer;">Hover ändrar färg</p>
-                            <button class="btn btn-dark border" id="btn-hover-demo">Testa</button>    
+                            <p class="mb-2" id="hover-text" style="cursor:pointer;">För muspekaren över denna text för att ändra färg samt pekare.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-xl-4">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
+                    <div class="card h-100 text-white">
                         <div class="card-body">
                             <h6 class="text-uppercase text-secondary small">Sidinformation</h6>
                             <p class="mb-1">Title: <span id="page-title"></span></p>
@@ -79,10 +78,13 @@ $(function (){
                 </div>
 
                 <div class="col-md-6 col-xl-4">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary h-100 text-white">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                        <span><i class="bi bi-text-paragraph me-2"></i>Antal paragrafer på sidan</span>
-                        <span class="fs-4 fw-bold" id="p-count"></span>
+                    <div class="card h-100 text-white">
+                        <div class="card-body">
+                            <h6 class="text-uppercase text-secondary small">Paragrafräkning</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-text-paragraph me-2"></i>Antal paragrafer på sidan</span>
+                                <span class="fs-4 fw-bold" id="p-count"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,12 +111,9 @@ $(function (){
 
                 // Övning 3 & 4: Byter textfärg när vid hover och återgår vid mouseleave.
                 $("#hover-text").on("mouseenter", function(){
-                    $(this).css("color", "#0d6efd");
+                    $(this).css("color", "#fd0d85");
                 }).on("mouseleave", function(){
                     $(this).css("color", "");
-                });
-                $("#btn-hover-demo").on("click", function(){
-                    alert("Sväv med musen äver texten för att se effekten!")
                 });
 
                 // Övning 5: Visa titel + Webbläsarinfo
@@ -138,7 +137,7 @@ $(function (){
             // skapar metoden render för att sriva ut mallen och skapa en tom punktlista med Id "alt-list"
             render: () => `
                 <div class="col-12">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary text-white">
+                    <div class="card text-white">
                         <div class="card-body">
                             <ul id="alt-list" class="mb-0"></ul>
                         </div>
@@ -180,17 +179,35 @@ $(function (){
             subtitle: "Aktuellt datum och tid just nu",
             // Vi fortsätter på samma sätt här, först skapar vi en metod som heter render och sedan skapar vi init.
             render: () => `
-                <div class="col-12 cold-md-6">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary text-white">
+                <div class="col-12 col-md-6">
+                    <div class="card text-white">
                         <div class="card-body">
-                            <p class="fs-4 mb-0" id="now"></p>
+                            <h6 class="text-uppercase text-secondary small">Veckodag</h6>
+                            <p class="fs-4 mb-0"><i class="bi bi-calendar3 me-2"></i><span id="today-date"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card text-white">
+                        <div class="card-body">
+                            <h6 class="text-uppercase text-secondary small">Klockslag</h6>
+                            <p class="fs-4 mb-0"><i class="bi bi-clock me-2"></i><span id="now-time"></span></p>
                         </div>
                     </div>
                 </div>
             `,
             init: () => {
-                // new Date kollar på datorns klocka, toLocaleString berättar att vi vill skriva ut den enligt den svenska standarden sen skriver vi ut den informationen i "#now"
-                $("#now").text(new Date().toLocaleString("sv-SE"));
+                // Lista med veckodagarnas namn, i samma ordning som getDay() räknar (0 = söndag).
+                const days = ["söndag", "måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag"];
+                // new Date kollar på datorns klocka, vi sparar den i "now" så vi kan använda samma tidpunkt för både datum och tid.
+                const now = new Date();
+                // getDay() ger ett nummer 0-6, vi använder det för att hämta rätt veckodagsnamn ur listan.
+                const dayName = days[now.getDay()];
+            
+                // Skriver ut veckodagen med stor bokstav först, samt datumet enligt svensk standard.
+                $("#today-date").text(dayName.charAt(0).toUpperCase() + dayName.slice(1) + ", " + now.toLocaleDateString("sv-SE"));
+                // toLocaleTimeString berättar att vi vill skriva ut klockslaget enligt den svenska standarden.
+                $("#now-time").text(now.toLocaleTimeString("sv-SE"));
             }
         },
 
@@ -200,7 +217,7 @@ $(function (){
             // Skapar metoden som skriver ut elementen.
             render: () => `
                 <div class="col-12 col-md-6">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary text-white">
+                    <div class="card text-white">
                         <div class="card-body">
                             <input type="number" id="check-input" class="form-control mb-2" placeholder="Ange ett tal">
                             <button class="btn btn-dark border" id="check-btn">Kontrollera</button>
@@ -238,8 +255,8 @@ $(function (){
             subtitle: "Visar multiplikationstabellen för valt tal.",
             // Skapar metoden som skriver ut elementen.
             render: () => `
-                <div class="col-12 cold-md-6">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary text white">
+                <div class="col-12 col-md-6">
+                    <div class="card text white">
                         <div class="card-body">
                             <input type="number" id="mult-input" class="form-control mb-2" placeholder="Ange ett tal">
                             <button class="btn btn-dark border" id="mult-btn">Visa tabell</button>
@@ -270,7 +287,7 @@ $(function (){
             subtitle: "Lägg till, ta bort, och markera uppgifter som klara",
             render: () => `
                 <div class="col-12 col-md-6">
-                    <div class="card bg-secondary bg-opacity-10 border-secondary text-white">
+                    <div class="card text-white">
                         <div class="card-body">
                             <div class="input-group mb-3">
                                 <input type="text" id="todo-input" class="form-control" placeholder="Ny Uppgift...">
@@ -309,7 +326,8 @@ $(function (){
         </div>
     `;
     nav.forEach(function (group){
-        navHtml += `<h6 class="text-uppercase text-secondary small px-3 mt-3">${group.group}</h6>`;
+        // Kommenterar bort, ser bättre ut utan grupperingen.
+        // navHtml += `<h6 class="text-uppercase text-secondary small px-3 mt-3">${group.group}</h6>`;
         navHtml += `<div class="list-group list-group-flush">`;
         group.items.forEach(function (item){
             navHtml += `

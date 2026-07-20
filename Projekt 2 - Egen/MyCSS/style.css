@@ -1,4 +1,27 @@
+html, body {
+    height: 100%;
+}
+
+.container-fluid.min-vh-100 {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-fluid.min-vh-100 > .row {
+    flex: 1;
+}
+
+:root {
+    --bg-main: #1a1d21;
+    --bg-panel: #24272c;
+}
+
+.container-fluid.bg-dark {
+    background-color: var(--bg-main) !important;
+}
+
 #list-container {
+    background-color: var(--bg-panel);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -27,6 +50,8 @@
 .card {
     border-radius: 0.75rem;
     transition: background-color 0.3s ease;
+    background-color: var(--bg-panel) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 body.light-theme {
@@ -57,4 +82,19 @@ body.light-theme .themed-text {
 
 #bg-card {
     background-color: #292D32;
+}
+
+body.light-theme #theme-toggle {
+    color: #212529;
+    border-color: #212529;
+}
+
+body.light-theme #theme-toggle:hover {
+    background-color: #212529;
+    color: #ffffff;
+}
+
+body.light-theme #list-container {
+    background-color: #ffffff;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
