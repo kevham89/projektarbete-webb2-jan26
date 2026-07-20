@@ -1,3 +1,18 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/bg-field.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* GÖR KORTEN OCH FORMULÄRET LITE Snyggare mot den mörka bakgrunden */
 .app-container {
+  color: #fff;
   max-width: 560px; 
+}
+
+.card {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.95) !important;
 }
